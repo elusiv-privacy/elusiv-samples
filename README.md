@@ -2,7 +2,8 @@
 Repo showing sample usage of the compiled Elusiv SDK
 
 ## Setup:
-1. Install the Elusiv SDK from the provided tarball (do not install the unzipped package, this will mess up the paths that node generates): 
+
+1. Install the Elusiv SDK from the provided tarball[^1]. (do not install the unzipped package, this will mess up the paths that node generates): 
 
 `npm i path/to/elusiv-sdk-1.0.0.tgz`
 
@@ -20,3 +21,5 @@ Call the sample you want to execute using:
 `npm run <sample name>`
 
 Currently available samples: `topup`, `send`, `txFetching`. (This README might get out of date at some point, so the topmost authority of what samples exist is still the code in `src`)
+
+[^1]: The SDK is currently in private beta. Contact us via [Twitter](https://twitter.com/elusivprivacy) or [Discord](http://discord.gg/elusivprivacy) to request access.
