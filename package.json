@@ -1,0 +1,29 @@
+{
+    "name": "elusiv-samples",
+    "version": "1.0.0",
+    "description": "Sample code using the Elusiv SDK",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc",
+        "topup": "npm run build && node dist/topup.js",
+        "send": "npm run build && node dist/send.js",
+        "txFetching": "npm run build && node dist/txFetching.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/elusiv-privacy/elusiv-samples.git"
+    },
+    "author": "Elusiv Privacy",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/elusiv-privacy/elusiv-samples/issues"
+    },
+    "homepage": "https://github.com/elusiv-privacy/elusiv-samples#readme",
+    "dependencies": {
+        "@noble/ed25519": "^1.7.1",
+        "@solana/web3.js": "^1.73.0"
+    },
+    "devDependencies": {
+        "typescript": "^4.9.4"
+    }
+}

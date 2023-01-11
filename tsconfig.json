@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "experimentalDecorators": true,
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "target": "es2015",
+      "declaration": true,
+      "outDir": "./dist",
+      "allowSyntheticDefaultImports": true,
+      "skipLibCheck": true,
+      "removeComments": true,
+      "noImplicitAny": true,
+      "noImplicitOverride": true,
+      "strict": true
+    },
+    "include": [
+      "src/**/*"
+    ]
+  }
