@@ -1,9 +1,9 @@
 # elusiv-samples
-Repo showing sample usage of the compiled Elusiv SDK
+Repo showing sample usage of the compiled Elusiv SDK. More fine-grained info can be found in the [sdk docs](https://elusiv-privacy.github.io/elusiv-sdk/).
 
 ## Setup:
 
-1. Install the Elusiv SDK from the provided tarball[^1]. (do not install the unzipped package, this will mess up the paths that node generates): 
+1. Install the Elusiv SDK from the provided tarball[^1]. (do not install the unzipped package, this will mess up the path resolution for node): 
 
 `npm i path/to/elusiv-sdk-1.0.0.tgz`
 
