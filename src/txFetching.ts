@@ -2,9 +2,6 @@ import { Keypair } from "@solana/web3.js";
 import { getParams } from "./boilerplate";
 
 async function main() {
-    const keyPair = Keypair.generate();
-    console.log(keyPair.secretKey);
-
     // Helper function for generating the elusiv instance 
     // THIS IS NOT PART OF THE SDK, check boilerplate.ts to see what exactly it does.
     const { elusiv } = await getParams();
@@ -19,7 +16,7 @@ async function main() {
     const last5PrivTxs = await elusiv.getPrivateTransactions(5, 'LAMPORTS');
 
     console.log("Our last 5 private transactions:\n");
-    console.log(mostRecentPrivTx);
+    console.log(last5PrivTxs);
 }
 
 // Run main when invoking this file
