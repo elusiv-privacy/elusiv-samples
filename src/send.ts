@@ -10,10 +10,12 @@ async function main() {
     // Fetch our current private balance
     const privateBalance = await elusiv.getLatestPrivateBalance('LAMPORTS')
 
+    console.log('Current private balance: ', privateBalance)
+
     // Can't send without a private balance
     if(privateBalance > BigInt(0)){
-        // Top up with 1 Sol
-        const res = await send(elusiv, keyPair, LAMPORTS_PER_SOL, 'LAMPORTS');
+        // Top up with half a Sol
+        const res = await send(elusiv, keyPair, 0.5 * LAMPORTS_PER_SOL, 'LAMPORTS');
         console.log(`Send initiated with sig ${res.sig.signature}`);
 
         // Wait for the send to be confirmed (have your UI do something else here, this takes a little)

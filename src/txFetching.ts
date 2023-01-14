@@ -1,4 +1,3 @@
-import { Keypair } from "@solana/web3.js";
 import { getParams } from "./boilerplate";
 
 async function main() {
