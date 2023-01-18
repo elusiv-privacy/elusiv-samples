@@ -26,6 +26,10 @@ export async function getParams(): Promise<{ elusiv: Elusiv, keyPair: Keypair }>
     return { elusiv, keyPair };
 }
 
-export function generatePrivateKey() : Uint8Array{
-    return Keypair.generate().secretKey;
+export function generatePrivateKey() : void{
+    const kp = Keypair.generate();
+    console.log('Private key (add this to constants.ts):')
+    console.log(kp.secretKey);
+    console.log('Public key (airdrop some sol to this):')
+    console.log(kp.publicKey.toBase58());
 }
