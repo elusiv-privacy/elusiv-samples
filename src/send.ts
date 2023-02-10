@@ -1,4 +1,4 @@
-import { Keypair, LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { ConfirmedSignatureInfo, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import { Elusiv, TokenType } from "elusiv-sdk";
 import { getParams } from "./boilerplate";
 
@@ -13,24 +13,20 @@ async function main() {
     console.log('Current private balance: ', privateBalance)
 
     // Can't send without a private balance
-    if(privateBalance > BigInt(0)){
+    if (privateBalance > BigInt(0)) {
         // Send half a Sol
-        const res = await send(elusiv, keyPair, 0.5 * LAMPORTS_PER_SOL, 'LAMPORTS');
-        console.log(`Send initiated with sig ${res.sig.signature}`);
-
-        // Wait for the send to be confirmed (have your UI do something else here, this takes a little)
-        await res.isConfirmed;
-        console.log('Send complete!');
+        const sig = await send(elusiv, keyPair.publicKey, 0.25 * LAMPORTS_PER_SOL, 'LAMPORTS');
+        console.log(`Send complete with sig ${sig.signature}`);
     }
-    else{
+    else {
         throw new Error('Can\'t send from an empty private balance');
     }
 
 }
 
-async function send(elusiv: Elusiv, keyPair: Keypair, amount: number, tokenType : TokenType) {
+async function send(elusiv: Elusiv, recipient: PublicKey, amount: number, tokenType: TokenType): Promise<ConfirmedSignatureInfo> {
     // Build the send transaction 
-    const sendTx = await elusiv.buildSendTx(amount, keyPair.publicKey, tokenType);
+    const sendTx = await elusiv.buildSendTx(amount, recipient, tokenType);
     // Send it off!
     return elusiv.sendElusivTx(sendTx);
 }
