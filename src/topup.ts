@@ -1,4 +1,4 @@
-import { Keypair, LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { ConfirmedSignatureInfo, Keypair, LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { Elusiv, TokenType } from "elusiv-sdk";
 import { getParams } from "./boilerplate";
 
@@ -13,17 +13,13 @@ async function main() {
     // We have no private balance? Top up! (We can also top up if we already have a private balance of course)
     if(privateBalance === BigInt(0)){
         // Top up with 1 Sol
-        const res = await topup(elusiv, keyPair, LAMPORTS_PER_SOL, 'LAMPORTS');
-        console.log(`Topup initiated with sig ${res.sig.signature}`);
-
-        // Wait for the topup to be confirmed (have your UI do something else here, this takes a little)
-        await res.isConfirmed;
-        console.log('Topup complete!');
+        const sig = await topup(elusiv, keyPair, 0.5*LAMPORTS_PER_SOL, 'LAMPORTS');
+        console.log(`Topup complete with sig ${sig.signature}`);
     }
 
 }
 
-async function topup(elusivInstance: Elusiv, keyPair: Keypair, amount: number, tokenType : TokenType) {
+async function topup(elusivInstance: Elusiv, keyPair: Keypair, amount: number, tokenType : TokenType) : Promise<ConfirmedSignatureInfo> {
     // Build our topup transaction
     const topupTx = await elusivInstance.buildTopUpTx(amount, tokenType);
     // Sign it (only needed for topups, as we're topping up from our public key there)

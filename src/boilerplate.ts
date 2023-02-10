@@ -6,10 +6,10 @@ import { DEVNET_RPC_URL, PRIV_KEY, USER_PASSWORD } from "./constants";
 // Boilerplate code used by all samples
 
 // Helper function to generate params used by all samples, namely a web3js connection, the keypair of the user, and the elusiv instance 
-export async function getParams(): Promise<{ elusiv: Elusiv, keyPair: Keypair }> {
+export async function getParams(): Promise<{ elusiv: Elusiv, keyPair: Keypair, conn : Connection }> {
     if(PRIV_KEY.length === 0) throw new Error('Need to provide a private key in constants.ts');
     // Connect to devnet
-    const connection = new Connection(DEVNET_RPC_URL);
+    const conn = new Connection(DEVNET_RPC_URL);
 
     // Generate a keypair from the private key to retrieve the public key and optionally 
     // sign txs
@@ -21,9 +21,9 @@ export async function getParams(): Promise<{ elusiv: Elusiv, keyPair: Keypair }>
     const seed = await sign(Elusiv.hashPw(USER_PASSWORD), keyPair.secretKey.slice(0, 32));
 
     // Create the elusiv instance
-    const elusiv = await Elusiv.getElusivInstance(seed, keyPair.publicKey, connection);
+    const elusiv = await Elusiv.getElusivInstance(seed, keyPair.publicKey, conn);
 
-    return { elusiv, keyPair };
+    return { elusiv, keyPair, conn};
 }
 
 export function generatePrivateKey() : void{

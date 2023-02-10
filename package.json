@@ -7,7 +7,9 @@
         "build": "tsc",
         "topup": "npm run build && node dist/topup.js",
         "send": "npm run build && node dist/send.js",
-        "txFetching": "npm run build && node dist/txFetching.js"
+        "txFetching": "npm run build && node dist/txFetching.js",
+        "solana-pay": "npm run build && node dist/solanaPayDemo.js",
+        "spl": "npm run build && node dist/SPL.js"
     },
     "repository": {
         "type": "git",
@@ -21,6 +23,8 @@
     "homepage": "https://github.com/elusiv-privacy/elusiv-samples#readme",
     "dependencies": {
         "@noble/ed25519": "^1.7.1",
+        "@solana/pay": "^0.2.4",
+        "@solana/spl-token": "^0.3.7",
         "@solana/web3.js": "^1.73.0"
     },
     "devDependencies": {
