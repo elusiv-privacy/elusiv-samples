@@ -9,7 +9,9 @@
         "send": "npm run build && node dist/send.js",
         "txFetching": "npm run build && node dist/txFetching.js",
         "solana-pay": "npm run build && node dist/solanaPayDemo.js",
-        "spl": "npm run build && node dist/SPL.js"
+        "spl": "npm run build && node dist/SPL.js",
+        "traceable-tx": "npm run build && node dist/TraceableTx.js",
+        "viewing-key":  "npm run build && node dist/ViewingKey.js"
     },
     "repository": {
         "type": "git",
