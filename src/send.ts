@@ -15,7 +15,7 @@ async function main() {
     // Can't send without a private balance
     if (privateBalance > BigInt(0)) {
         // Send half a Sol
-        const sig = await send(elusiv, keyPair.publicKey, 0.25 * LAMPORTS_PER_SOL, 'LAMPORTS');
+        const sig = await send(elusiv, keyPair.publicKey, 0.5 * LAMPORTS_PER_SOL, 'LAMPORTS');
         console.log(`Send complete with sig ${sig.signature}`);
     }
     else {
